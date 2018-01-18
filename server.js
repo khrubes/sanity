@@ -5,7 +5,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var Comment = require('./model/comments');
+var Game = require('./model/gameschema');x
 var dotenv = require('dotenv').config({path: 'info.env'});
 
 //and create our instances
