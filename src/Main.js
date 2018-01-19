@@ -7,7 +7,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/newgame' component={NewGame}/>
+      <Route path='/newgame' component={NewGame} apiURL='http://localhost:3001/api/'/>
     </Switch>
   </main>
 )

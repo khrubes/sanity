@@ -5,7 +5,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var Game = require('./model/gameschema');x
+var Game = require('./model/gameschema');
 var dotenv = require('dotenv').config({path: 'info.env'});
 
 //and create our instances
@@ -39,11 +39,26 @@ app.use(function(req, res, next) {
 });
 
 //now  we can set the route path & initialize the API
-router.get('/', function(req, res) {
-  res.json({ message: 'API Initialized!'});
-});
+// router.get('/', function(req, res) {
+//   res.json({ message: 'API Initialized!'});
+// });
 
-//router.route('/comments') for api/....., need the route part
+
+router.route('/newgame')
+  //post new comment to the database
+  .post(function(req, res) {
+    var game = new Game();
+    game.game_id = makeid();
+
+    game.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({ message: game.game_id });
+    });
+  });
+
+
+
 
 //Use our router configuration when we call /api
 app.use('/api', router);
@@ -52,3 +67,14 @@ app.use('/api', router);
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
 });
+
+// makes a game id
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 4; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
