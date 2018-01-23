@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import style from './style';
+//import style from './style';
 
 // creates a new game in the DB and displays the game id for others to join on the screen
 class NewGame extends Component {
@@ -28,11 +28,12 @@ class NewGame extends Component {
     // get game id response & display it
     console.log("newgame component did mount");
     console.log(this);
+    var that = this;
 
     axios.post(`${this.props.apiURL}/newgame`)
       .then(function (response) {
         console.log(response);
-        this.setState({gameId: response});
+        that.setState({gameId: response.data.message});
         // create new player ....
       })
       .catch(function (error) {

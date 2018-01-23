@@ -7,9 +7,17 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/newgame' component={NewGame} apiURL='http://localhost:3001/api/'/>
+      <Route path='/newgame' render={() => <NewGame apiURL='http://localhost:3001/api/' />} />
+      <Route component={NoMatch}/>
     </Switch>
   </main>
 )
+
+const NoMatch = ({ location }) => (
+    <div>
+      <h3>No match for <code>{location.pathname}</code></h3>
+    </div>
+  )
+  
 
 export default Main
