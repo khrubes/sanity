@@ -57,6 +57,21 @@ router.route('/newgame')
     });
   });
 
+  router.route('/game')
+  //post new comment to the database
+  .get(function(req, res) {
+    //get game w/ id
+    // req.params
+    var query = Game.findOne({ 'game_id': req.params.gamecode });
+    
+    query.exec(function (err, gameResult) {
+      if (err) res.send(err);
+      // Prints "Space Ghost is a talk show host."
+      console.log(gameResult);
+      res.json(gameResult);
+    });
+  });
+
 
 
 

@@ -26,8 +26,7 @@ class NewGame extends Component {
   componentDidMount() {
     // make post request to /api/newgame
     // get game id response & display it
-    console.log("newgame component did mount");
-    console.log(this);
+
     var that = this;
 
     axios.post(`${this.props.apiURL}/newgame`)
