@@ -38,12 +38,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-//now  we can set the route path & initialize the API
-// router.get('/', function(req, res) {
-//   res.json({ message: 'API Initialized!'});
-// });
+//-- API -- //
 
-
+//request: empty
+//response: 4 digit game_id
 router.route('/newgame')
   //post new comment to the database
   .post(function(req, res) {
@@ -57,23 +55,17 @@ router.route('/newgame')
     });
   });
 
+  //request: gamecode=<4 digit code>
+  //response: the JSON object for a game
   router.route('/game')
-  //post new comment to the database
   .get(function(req, res) {
-    //get game w/ id
-    // req.params
-    var query = Game.findOne({ 'game_id': req.params.gamecode });
-    
-    query.exec(function (err, gameResult) {
-      if (err) res.send(err);
-      // Prints "Space Ghost is a talk show host."
-      console.log(gameResult);
-      res.json(gameResult);
-    });
+    Game.find({'game_id': req.query.gamecode}, function (err, gameResult) {
+      if (err){ 
+        res.send(err);
+      }
+      res.json({ message: gameResult });
+    }); 
   });
-
-
-
 
 //Use our router configuration when we call /api
 app.use('/api', router);
