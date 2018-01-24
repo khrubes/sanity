@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import JoinGameForum from './JoinGameForum';
 //import style from './style';
 
 // creates a new game in the DB and displays the game id for others to join on the screen
 class NewUser extends Component {
 
-   constructor(props) {
-    super(props);
-  }
+  //  constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (

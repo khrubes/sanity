@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import JoinGameForum from './JoinGameForum';
 //import style from './style';
 
-class Home extends Component {
+class Home extends Component {  
   render() {
     return (
       <div>
@@ -13,10 +13,9 @@ class Home extends Component {
             new game
           </button>
         </Link>
-        <JoinGameForum apiURL='http://localhost:3001/api/'/>
+        <JoinGameForum {...this.props} apiURL='http://localhost:3001/api/'/>
       </div>
     )
   }
 }
-
 export default Home;
