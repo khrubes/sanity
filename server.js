@@ -67,6 +67,19 @@ router.route('/newgame')
     }); 
   });
 
+  router.route('/game/addplayer')
+  //post new comment to the database
+  .put(function(req, res) {
+    //TODO finish put : https://stackoverflow.com/questions/5024787/update-model-with-mongoose-express-nodejs
+    
+    // Game.find({'game_id': req.query.gamecode}, function (err, gameResult) {
+    //   if (err){ 
+    //     res.send(err);
+    //   }
+    //   res.json({ message: gameResult });
+    // }); 
+  });
+
 //Use our router configuration when we call /api
 app.use('/api', router);
 

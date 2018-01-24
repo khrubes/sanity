@@ -25,16 +25,14 @@ class JoinGameForum extends Component {
                 var game = response.data.message[0];
 
                 if (game) {
-                    // game found
-                    // game.game_id
-                    // todo go to adduser page
-                    that.setState({ errorMessage: ''});
+                    that.setState({ errorMessage: '' });
 
                     // go to /addplayer and pass the game id
                     that.props.history.push({
                         pathname: '/addplayerforum',
                         state: {
                             game_id: game.game_id,
+                            apiURL: that.props.apiURL
                         }
                     });
 
